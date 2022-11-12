@@ -3,14 +3,6 @@
 install:
 	bundle install
 
-install_gem:
-	yes | rm -rf pkg/*
-	bundle exec rake build
-	gem install --local pkg/*.gem
-
-start:
-	bin/gemfather
-
 cons:
 	bin/console
 
