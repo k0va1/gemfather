@@ -86,7 +86,7 @@ module Gemfather
 
     def init_gem
       bundle_options = build_bundle_options
-      `bundle gem #{settings[:name]} #{bundle_options}`
+      `bundle gem #{settings[:name]} #{bundle_options} > /dev/null 2>&1 && cd #{settings[:name]}`
     end
 
     def update_gem_info
