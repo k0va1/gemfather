@@ -8,11 +8,13 @@ install_gem:
 	bundle exec rake build
 	gem install --local pkg/*.gem
 
+remove_gem:
+	yes | gem uninstall gemfather
+
+reinstall_gem: remove_gem install_gem
+
 start:
 	bin/gemfather
-
-cons:
-	bin/console
 
 test:
 	bundle exec rspec
