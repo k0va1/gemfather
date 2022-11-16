@@ -8,7 +8,7 @@ module Gemfather
     class SettingsReader
       def call # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
         settings = {}
-        prompt = TTY::Prompt.new
+        prompt = TTY::Prompt.new(interrupt: :exit)
 
         settings[:name] = prompt.ask("Gem name:", default: "awesome-new-gem")
         settings[:summary] = prompt.ask("Summary", default: "awesome-new-gem")
