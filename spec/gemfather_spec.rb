@@ -7,7 +7,7 @@ RSpec.describe Gemfather::Runner do
     subject { described_class.new(settings_reader).call }
 
     let(:settings_reader) { instance_double("Gemfather::SettingsReader") }
-    let(:settings_mock) do 
+    let(:settings_mock) do
       {
         name: "new_gem",
         summary: "new_summary",
@@ -16,7 +16,7 @@ RSpec.describe Gemfather::Runner do
         linter: "Rubocop",
         test: "RSpec",
         ci: "GitHub",
-        makefile?: true,
+        makefile: true,
         coc: true,
         debugger: "IRB"
       }

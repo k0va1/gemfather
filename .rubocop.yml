@@ -11,3 +11,14 @@ Style/StringLiteralsInInterpolation:
 
 Layout/LineLength:
   Max: 120
+
+Metrics/BlockLength:
+  CountComments: false
+  Max: 5
+  IgnoredMethods:
+    - context
+    - describe
+    - it
+    - let
+    - shared_examples
+    - shared_examples_for

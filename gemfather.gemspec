@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://gitlab.com/k0va1/gemfather"
   spec.metadata["changelog_uri"] = "https://gitlab.com/k0va1/gemfather"
 
-  spec.files = Dir.glob('{lib,templates}/**/*', File::FNM_DOTMATCH)
+  spec.files = Dir.glob("{lib,templates}/**/*", File::FNM_DOTMATCH)
   spec.bindir = "exe"
   spec.executables = ["gemfather"]
 

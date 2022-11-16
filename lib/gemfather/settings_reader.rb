@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require "tty-prompt"
 
 module Gemfather
+  # Class responsible to collect user input and build settings hash
   class SettingsReader
-    def call
+    def call # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
       settings = {}
       prompt = TTY::Prompt.new
 

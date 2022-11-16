@@ -7,6 +7,7 @@ require "fileutils"
 module Gemfather
   class Error < StandardError; end
 
+  # Entrypoint of the gem
   class Runner
     attr_accessor :settings
 
@@ -70,18 +71,9 @@ module Gemfather
     end
 
     def build_ci_options
-      case settings[:ci]
-      when "GitHub"
-        "--ci=github"
-      when "Gitlab"
-        "--ci=gitlab"
-      when "Travis"
-        "--ci=travis"
-      when "Circle"
-        "--ci=circle"
-      else
-        ""
-      end
+      cis = { "Github" => "github", "Gitlab" => "gitlab", "Travis" => "travis", "Circle" => "circle" }
+      ci_name = cis[settings[:ci]]
+      ci_name ? "--ci=#{ci_name}" : ""
     end
 
     def init_gem
@@ -91,31 +83,34 @@ module Gemfather
 
     def update_gem_info
       gemspec_path = File.join(Dir.pwd, settings[:name], "#{settings[:name]}.gemspec")
-
-      gemspec_info_lines = IO.readlines(gemspec_path).map do |line|
-        case line
-        when /spec\.summary =.*/
-          line.gsub(/=\s\".*\"/, "= \"#{settings[:summary]}\"")
-        when /spec\.description =.*/
-          line.gsub(/=\s\".*\"/, "= \"#{settings[:description]}\"")
-        when /spec\.homepage =.*/
-          line.gsub(/=\s\".*\"/, "= \"#{settings[:homepage]}\"")
-        else
-          line
-        end
-      end
+      updated_gemspec_lines = update_gemspec_lines(gemspec_path)
 
       File.open(gemspec_path, "w") do |f|
-        f.write(gemspec_info_lines.join)
+        f.write(updated_gemspec_lines.join)
         f.close
       end
     end
 
-    def copy_templates
-      if settings[:makefile?]
-        new_gem_root = File.join(Dir.pwd, settings[:name])
-        FileUtils.cp(File.join(File.dirname(__dir__), "templates/Makefile"), new_gem_root)
+    def update_gemspec_lines(gemspec_path) # rubocop:disable Metrics/MethodLength
+      IO.readlines(gemspec_path).map do |line| # rubocop:disable Metrics/BlockLength
+        case line
+        when /spec\.summary =.*/
+          line.gsub(/=\s".*"/, "= \"#{settings[:summary]}\"")
+        when /spec\.description =.*/
+          line.gsub(/=\s".*"/, "= \"#{settings[:description]}\"")
+        when /spec\.homepage =.*/
+          line.gsub(/=\s".*"/, "= \"#{settings[:homepage]}\"")
+        else
+          line
+        end
       end
+    end
+
+    def copy_templates
+      return unless settings[:makefile]
+
+      new_gem_root = File.join(Dir.pwd, settings[:name])
+      FileUtils.cp(File.join(File.dirname(__dir__), "templates/Makefile"), new_gem_root)
     end
   end
 end
