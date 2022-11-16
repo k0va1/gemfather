@@ -9,6 +9,10 @@ It includes:
 * Linter config
 * Test config
 
+## Supported Ruby versions
+
+This gem supports Ruby version >= 2.6.0
+
 ## Installation
 
 `gem install gemfather`
