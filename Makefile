@@ -13,6 +13,10 @@ remove_gem:
 
 reinstall_gem: remove_gem install_gem
 
+publish:
+	bundle exec rake build
+	gem push pkg/*.gem
+
 start:
 	bin/gemfather
 

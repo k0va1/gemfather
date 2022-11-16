@@ -1,8 +1,8 @@
-# Gemfather
+# Gemfather CLI
 
-![Build status](https://github.com/k0va1/gemfather/actions/workflows/main.yml/badge.svg)
+![Build status](https://github.com/k0va1/gemfather-cli/actions/workflows/main.yml/badge.svg)
 
-`gemfather` allows you to create new gems easily providing predifined templates
+`gemfather-cli` allows you to create new gems easily providing predifined templates
 
 It includes:
 * Makefile
@@ -15,7 +15,7 @@ This gem supports Ruby version >= 2.6.0
 
 ## Installation
 
-`gem install gemfather`
+`gem install gemfather-cli`
 
 ## Usage
 
@@ -32,7 +32,7 @@ Just call `gemfather` in the terminal
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/k0va1/gemfather.
+Bug reports and pull requests are welcome on GitHub at https://github.com/k0va1/gemfather-cli.
 
 ## License
 

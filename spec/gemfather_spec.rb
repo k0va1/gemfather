@@ -2,11 +2,11 @@
 
 require "fileutils"
 
-RSpec.describe Gemfather::Runner do
+RSpec.describe Gemfather::Cli::Runner do
   describe "run" do
     subject { described_class.new(settings_reader).call }
 
-    let(:settings_reader) { instance_double("Gemfather::SettingsReader") }
+    let(:settings_reader) { instance_double("Gemfather::Cli::SettingsReader") }
     let(:settings_mock) do
       {
         name: "new_gem",

@@ -2,6 +2,6 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
-require "gemfather"
+require "gemfather/cli"
 
-Gemfather::Runner.new.call
+Gemfather::Cli::Runner.new.call
