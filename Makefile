@@ -18,7 +18,7 @@ publish:
 	gem push pkg/*.gem
 
 start:
-	bin/gemfather
+	exe/gemfather
 
 test:
 	bundle exec rspec
