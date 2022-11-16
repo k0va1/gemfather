@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gemfather-cli (0.1.0)
+    gemfather-cli (0.1.1)
       tty-prompt (~> 0.23)
 
 GEM
