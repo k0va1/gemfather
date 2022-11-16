@@ -1,5 +1,7 @@
 # Gemfather
 
+![Build status](https://github.com/k0va1/gemfather/actions/workflows/main.yml/badge.svg)
+
 `gemfather` allows you to create new gems easily providing predifined templates
 
 It includes:
