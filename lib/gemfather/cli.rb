@@ -91,7 +91,7 @@ module Gemfather
         end
       end
 
-      def update_gemspec_lines(gemspec_path) # rubocop:disable Metrics/MethodLength
+      def update_gemspec_lines(gemspec_path) # rubocop:disable Metrics/MethodLength,Metrics/CyclomaticComplexity,Metrics/AbcSize
         IO.readlines(gemspec_path).map do |line| # rubocop:disable Metrics/BlockLength
           case line
           when /spec\.summary =.*/
@@ -111,10 +111,20 @@ module Gemfather
       end
 
       def copy_templates
-        puts File.join(File.dirname(__dir__))
-        new_gem_root = File.join(Dir.pwd, settings[:name])
+        copy_makefile
+        copy_changelog
+      end
+
+      def copy_makefile
         FileUtils.cp(File.join(File.dirname(__dir__), "../templates/Makefile"), new_gem_root) if settings[:makefile?]
+      end
+
+      def copy_changelog
         FileUtils.touch("#{new_gem_root}/CHANGELOG.md") if settings[:changelog?]
+      end
+
+      def new_gem_root
+        @new_gem_root ||= File.join(Dir.pwd, settings[:name])
       end
     end
   end
