@@ -9,5 +9,8 @@ cons:
 test:
 	bundle exec rspec
 
+release:
+	bundle exec rake release
+
 lint:
 	bundle exec rubocop
