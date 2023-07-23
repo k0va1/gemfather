@@ -4,6 +4,8 @@
 
 `gemfather-cli` allows you to create new gems easily providing predifined templates
 
+[![asciicast](https://asciinema.org/a/598640.svg)](https://asciinema.org/a/598640)
+
 It includes:
 * Makefile
 * Linter config
