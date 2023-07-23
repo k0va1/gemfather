@@ -26,7 +26,7 @@ Just call `gemfather` in the terminal
 * run `make install` to install gem dependencies
 * run `make start` to install gem dependencies
 * run `make test` to run tests
-* run `make lint` to run linter
+* run `make lint-fix` to run autocorrect
 * run `make install_gem` to intall gem locally
 * run `make reinstall_gem` to reintall gem locally
 
