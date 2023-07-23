@@ -67,7 +67,7 @@ module Gemfather
       end
 
       def build_coc_options
-        settings[:coc] ? "--coc" : "--no-coc"
+        settings[:coc?] ? "--coc" : "--no-coc"
       end
 
       def build_ci_options
