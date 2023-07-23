@@ -111,11 +111,9 @@ module Gemfather
       end
 
       def copy_templates
-        return unless settings[:makefile]
-
         puts File.join(File.dirname(__dir__))
         new_gem_root = File.join(Dir.pwd, settings[:name])
-        FileUtils.cp(File.join(File.dirname(__dir__), "../templates/Makefile"), new_gem_root)
+        FileUtils.cp(File.join(File.dirname(__dir__), "../templates/Makefile"), new_gem_root) if settings[:makefile?]
         FileUtils.touch("#{new_gem_root}/CHANGELOG.md") if settings[:changelog?]
       end
     end
