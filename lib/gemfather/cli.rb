@@ -100,6 +100,10 @@ module Gemfather
             line.gsub(/=\s".*"/, "= \"#{settings[:description]}\"")
           when /spec\.homepage =.*/
             line.gsub(/=\s".*"/, "= \"#{settings[:homepage]}\"")
+          when /spec\.metadata\["source_code_uri"\] =.*/
+            line.gsub(/=\s".*"/, "= \"#{settings[:homepage]}\"")
+          when /spec\.metadata\["changelog_uri"\] =.*/
+            line.gsub(/=\s".*"/, "= \"#{settings[:homepage]}/CHANGELOG.md\"") if settings[:changelog?]
           else
             line
           end
@@ -112,6 +116,7 @@ module Gemfather
         puts File.join(File.dirname(__dir__))
         new_gem_root = File.join(Dir.pwd, settings[:name])
         FileUtils.cp(File.join(File.dirname(__dir__), "../templates/Makefile"), new_gem_root)
+        FileUtils.touch("#{new_gem_root}/CHANGELOG.md") if settings[:changelog?]
       end
     end
   end

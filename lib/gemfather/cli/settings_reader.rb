@@ -37,6 +37,7 @@ module Gemfather
 
         settings[:makefile?] = prompt.yes?("Do you need Makefile?")
         settings[:coc] = prompt.yes?("Do you need Code Of Conduct?")
+        settings[:changelog?] = prompt.yes?("Do you need CHANGELOG?")
 
         settings[:debugger] = prompt.select("Select debugger tool:") do |menu|
           menu.choice "IRB"
